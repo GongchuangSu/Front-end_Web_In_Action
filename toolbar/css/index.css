@@ -1,12 +1,66 @@
-.toolbar-layer, .toolbar-item {
-  background-image: url(../img/toolbar.png);
-  background-repeat: no-repeat;
+@charset "UTF-8";
+@font-face {
+  font-family: 'icomoon';
+  src: url("fonts/icomoon.eot?15tg0c");
+  src: url("fonts/icomoon.eot?15tg0c#iefix") format("embedded-opentype"), url("fonts/icomoon.ttf?15tg0c") format("truetype"), url("fonts/icomoon.woff?15tg0c") format("woff"), url("fonts/icomoon.svg?15tg0c#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+[class^="icon-"], .toolbar-btn, [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-wechat:before, .toolbar-item-weixin .toolbar-btn:before {
+  content: "\e900";
+}
+
+.icon-weixin:before {
+  content: "\e900";
+}
+
+.icon-vertical_align_top:before, .toolbar-item-top .toolbar-btn:before {
+  content: "\e901";
+}
+
+.icon-envelope:before {
+  content: "\e902";
+}
+
+.icon-letter:before {
+  content: "\e902";
+}
+
+.icon-email:before, .toolbar-item-feedback .toolbar-btn:before {
+  content: "\e902";
+}
+
+.icon-mail:before {
+  content: "\e902";
+}
+
+.icon-message:before {
+  content: "\e902";
+}
+
+.icon-mobile:before, .toolbar-item-app .toolbar-btn:before {
+  content: "\e958";
 }
 
 .toolbar {
   position: fixed;
-  right: 5px;
+  left: 50%;
   bottom: 5px;
+  margin-left: 26px;
 }
 
 .toolbar-item {
@@ -15,13 +69,14 @@
   width: 52px;
   height: 52px;
   margin-top: 1px;
-  -webkit-transiton: background-position 1s;
-  -moz-transition: background-position 1s;
-  -ms-transition: background-position 1s;
-  -o-transition: transition;
-  transition: background-position 1s;
 }
-.toolbar-item:hover .toolbar-layer {
+.toolbar-item:hover .toolbar-btn:before {
+  top: -52px;
+}
+.toolbar-item:hover .toolbar-btn:after {
+  top: 0;
+}
+.toolbar-item:hover:after {
   opacity: 1;
   filter: alpha(opacity=100);
   -webkit-transform: scale(1);
@@ -30,48 +85,14 @@
   -o-transform: scale(1);
   transform: scale(1);
 }
-
-.toolbar-item-weixin {
-  background-position: 0 -798px;
-}
-.toolbar-item-weixin:hover {
-  background-position: 0 -860px;
-}
-.toolbar-item-weixin .toolbar-layer {
-  height: 212px;
-  background-position: 0 0;
-}
-
-.toolbar-item-feedback {
-  background-position: 0 -426px;
-}
-.toolbar-item-feedback:hover {
-  background-position: 0 -488px;
-}
-
-.toolbar-item-app {
-  background-position: 0 -550px;
-}
-.toolbar-item-app:hover {
-  background-position: 0 -612px;
-}
-.toolbar-item-app .toolbar-layer {
-  height: 194px;
-  background-position: 0 -222px;
-}
-
-.toolbar-item-top {
-  background-position: 0 -674px;
-}
-.toolbar-item-top:hover {
-  background-position: 0 -736px;
-}
-
-.toolbar-layer {
+.toolbar-item:after {
+  content: "";
   position: absolute;
   right: 46px;
   bottom: -10px;
   width: 172px;
+  background-image: url(../img/toolbar_img.png);
+  background-repeat: no-repeat;
   opacity: 0;
   filter: alpha(opacity=0);
   -webkit-transform-origin: 95% 95%;
@@ -89,4 +110,65 @@
   -ms-transition: all 1s;
   -o-transition: transition;
   transition: all 1s;
+}
+
+.toolbar-item-weixin:after {
+  content: "";
+  height: 212px;
+  background-position: 0 0;
+}
+.toolbar-item-weixin .toolbar-btn:after {
+  content: "公众\A账号";
+}
+
+.toolbar-item-feedback .toolbar-btn:after {
+  content: "意见\A反馈";
+}
+
+.toolbar-item-app:after {
+  content: "";
+  height: 194px;
+  background-position: 0 -222px;
+}
+.toolbar-item-app .toolbar-btn:after {
+  content: "APP\A下载";
+}
+
+.toolbar-item-top .toolbar-btn:after {
+  content: "返回\A顶部";
+}
+
+.toolbar-btn {
+  top: 0;
+  overflow: hidden;
+}
+.toolbar-btn, .toolbar-btn:before, .toolbar-btn:after {
+  position: absolute;
+  left: 0;
+  width: 52px;
+  height: 52px;
+}
+.toolbar-btn:before, .toolbar-btn:after {
+  content: "";
+  color: #fff;
+  text-align: center;
+  -webkit-transiton: top 1s;
+  -moz-transition: top 1s;
+  -ms-transition: top 1s;
+  -o-transition: transition;
+  transition: top 1s;
+}
+.toolbar-btn:before {
+  top: 0;
+  background-color: #d0d6d9;
+  font-size: 30px;
+  line-height: 52px;
+}
+.toolbar-btn:after {
+  top: 52px;
+  background-color: #98a1a6;
+  font-size: 12px;
+  line-height: 1.2;
+  padding-top: 12px;
+  white-space: pre;
 }
