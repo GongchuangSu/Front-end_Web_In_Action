@@ -108,3 +108,6 @@ transition: background-position 1s;
 transform-origin(right bottom)); // 变换的基准点
 transform: scale(0.01);
 ```
+
+# 参考资料
+[侧栏工具条开发(视频教程)](http://www.imooc.com/learn/425)
